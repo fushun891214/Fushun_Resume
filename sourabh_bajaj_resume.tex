@@ -1,0 +1,194 @@
+%-------------------------
+% Resume in LateX
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks,pdfnewwindow=true]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://web.fushun181.com/}{\Large FU-SHUN ZHANG}} & Email: \href{mailto:fushun891214@gmail.com}{fushun891214@gmail.com}\\
+  \href{https://web.fushun181.com/}{web.fushun181.com} & Mobile: \href{tel:+886968733583}{+886-968733583} \\
+\end{tabular*}
+
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {National Taipei University of Technology}{Taipei, Taiwan}
+      {Master of Electronic Engineering, Computer Science Track (\href{https://drive.google.com/file/d/1ZNHQVqyw-mhiaECaysLjq4f22toqWvKx/view?usp=share_link}{View Transcript})}{July 2024 -- Aug 2026}
+    \resumeSubheading
+      {Soochow University}{Taipei, Taiwan}
+      {Bachelor of Computer Science and Information Management (\href{https://drive.google.com/file/d/1ZXEQBM5c1ultxlR0w4UdqclU43cX46l-/view?usp=sharing}{View Transcript})}{Feb 2021 -- Mar 2024}
+  \resumeSubHeadingListEnd
+
+
+%-----------CERTIFICATIONS-----------------
+\section{Certifications}
+  \resumeSubHeadingListStart
+    \resumeSubItem{TOEIC}
+      {560 (Date: July 2025) (\href{https://drive.google.com/file/d/1cn7Se__A2mzFqkbpxQ4oiAXuJRGHWV6u/view?usp=sharing}{View Certificate})}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {MMSLAB}{Taipei, Taiwan}
+      {Lab Member}{July 2024 -- Aug 2026}
+      \resumeItemListStart
+        \resumeItem{iTalkuTalk}
+          {[\href{https://www.italkutalk.com/}{Website} | \href{https://apps.apple.com/tw/app/italkutalk/id1263409577}{App Store} | \href{https://play.google.com/store/apps/details?id=lab.italkutalk&hl=zh_TW}{Google Play}] A large-scale language learning platform with over 1 million downloads on Google Play. Responsible for backend API development, database architecture design, and web development. Took over and refactored legacy codebase, maintaining and optimizing features based on user requirements. Rebuilt the admin management system from EJS architecture to Vue framework, significantly improving UI interface and overall performance.}
+        \resumeItem{HomeEasy}
+          {[\href{https://www.homeeasy.app/}{Website} | \href{https://apps.apple.com/us/app/家易-home-easy-裝潢施工比價平台/id6477271187}{App Store} | \href{https://play.google.com/store/apps/details?id=lab.homeeasy}{Google Play}] An interior decoration and construction bidding platform providing services across web, Android, and iOS platforms. Took over the project during second year of master's program, responsible for backend API development, database architecture design, and web development. Fixed multiple functional and workflow bugs. Researched Google Search Console and SEO best practices, optimized website SEO configurations, significantly increasing project visibility.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Virtual File System}
+      {[\href{https://github.com/fushun891214/Advance_C_Final_Project}{GitHub}] A final project for Advanced C Programming course, implementing a Virtual File System with commands including vi, ls, mkdir, and rm. Defined custom INode and SuperBlock data structures to manage Virtual Disk data allocation, utilizing techniques such as pointers, pointer to pointer, bitmap, and dynamic memory management. The project adopts a layered modular architecture design, dividing functionality into three independent modules: Core Layer (space.c/h) implements the underlying management mechanism of the virtual disk, including allocation and release of SuperBlock, INode, and Block, providing infrastructure for the file system; Command Layer (commands.c/h) built on top of the core layer, implements user command interface (such as ls, cd, mkdir, rm, etc.), handling path parsing, file operations, and encrypted storage functions; Editor Layer (vi.c/h) provides vi-like text editor functionality, including insert, delete, save operations, demonstrating complex application layer implementation. This architecture features high cohesion and low coupling, with clear module responsibilities, facilitating maintenance and expansion.}
+    \resumeSubItem{Pay Off Bar}
+      {[\href{https://youtu.be/O5BIyIPJP1Q?si=yKiBYVI9u3izC_13}{Demo Video} | \href{https://github.com/fushun891214/payOffBarServer}{GitHub}] A final project for Operating Systems course, designed to solve bill tracking problems when dining out, providing automatic bill management to prevent both payers and payees from forgetting debts. Main features include: Group Management - create groups to manage bill records, display all payees' debt amounts and payment status, facilitating collaborative bill splitting between payers and payees; Friend System - search and establish friend relationships using friend IDs; Payment Reminders - utilize push notifications to remind payees to pay through mobile notifications; Payment Status - payers can update payees' payment status within groups and notify payees of completed payments via push notifications. In the PayOff Bar project, I was responsible for backend API development and database schema design. In the friend system and group management features, I utilized relational design between multiple data collections and integrated Firebase Cloud Messaging service in the backend API server, enabling the frontend to trigger real-time app push notifications when calling APIs.}
+    \resumeSubItem{Stock Crawler}
+      {[\href{https://github.com/fushun891214/Stock_Crawler}{GitHub}] A final project for Data Engineering Practice and Application course, aimed at crawling data from Taiwan Stock Exchange through web scraping technology and storing all crawled data in MongoDB database. Subsequently queried MongoDB to obtain specific stock trading information, closing prices, average prices, and other data, and used Python's Matplotlib library for data visualization.}
+    \resumeSubItem{Travel Website}
+      {[\href{https://github.com/fushun891214/Travel-Website}{GitHub}] A final project for Agile Development and Practical Application course, focused on developing a travel website using Scrum methodology. Based on user requirements, planned and designed the entire project workflow through intensive discussions and rapid iterations. The final implementation delivered a travel website project supporting RWD responsive display and email verification functionality.}
+    \resumeSubItem{Skin Identification App}
+      {[\href{https://github.com/fushun891214/Skin_Identification_}{GitHub}] My undergraduate capstone project, aimed at capturing human skin through mobile phone camera to identify various skin conditions. Provided registration and login functionality, allowing users to record and track their skin health status. In this project, I was responsible for integrating the skin recognition model and app functionality development, including implementing Google third-party registration/login functionality and user data management.}
+  \resumeSubHeadingListEnd
+
+%
+%--------SKILLS------------
+\section{Skills}
+  \resumeSubHeadingListStart
+    \item
+      \textbf{Backend Development}
+      \resumeItemListStart
+        \item\small{Proficient in .NET and Express API development}
+        \item\small{Familiar with MVC project architecture}
+        \item\small{Database schema design and maintenance}
+        \item\small{Docker deployment capabilities}
+        \item\small{Version control tools such as Git and GitHub}
+        \item\small{CI/CD automation tools such as Jenkins}
+      \resumeItemListEnd
+    \item
+      \textbf{Web Development}
+      \resumeItemListStart
+        \item\small{Proficient in basic web structure: HTML, JS, CSS}
+        \item\small{Web frameworks: EJS, Vue, Nuxt}
+        \item\small{Familiar with web rendering modes: CSR and SSR}
+        \item\small{Web SEO optimization including meta element configuration}
+        \item\small{API integration using axios for HTTP requests}
+        \item\small{Configure personalized data and store in Local Storage}
+      \resumeItemListEnd
+    \item
+      \textbf{Cloud Services}
+      \resumeItemListStart
+        \item\small{Familiar with AWS services: EC2, Load Balance, Lambda, ECR, S3}
+        \item\small{Familiar with Cloudflare services: Domain Name registration and management, Cloudflare Tunnel configuration, DNS setup, and Load Balance integration}
+      \resumeItemListEnd
+    \item
+      \textbf{AI Agent Development}
+      \resumeItemListStart
+        \item\small{Familiar with setting up Ollama environment for running LLMs}
+        \item\small{Familiar with developing RAG using LangChain}
+        \item\small{Vector data storage using ChromaDB}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
