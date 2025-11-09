@@ -1,6 +1,9 @@
 # Archieve
 Archieve/
 
+# Resume PDF output directory
+resume_pdf/
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
