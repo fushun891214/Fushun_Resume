@@ -139,9 +139,26 @@
 \section{Projects}
   \resumeSubHeadingListStart
     \resumeSubItem{Virtual File System}
-      {[\href{https://github.com/fushun891214/Advance_C_Final_Project}{GitHub}] A final project for Advanced C Programming course, implementing a Virtual File System with commands including vi, ls, mkdir, and rm. Defined custom INode and SuperBlock data structures to manage Virtual Disk data allocation, utilizing techniques such as pointers, pointer to pointer, bitmap, and dynamic memory management. The project adopts a layered modular architecture design, dividing functionality into three independent modules: Core Layer (space.c/h) implements the underlying management mechanism of the virtual disk, including allocation and release of SuperBlock, INode, and Block, providing infrastructure for the file system; Command Layer (commands.c/h) built on top of the core layer, implements user command interface (such as ls, cd, mkdir, rm, etc.), handling path parsing, file operations, and encrypted storage functions; Editor Layer (vi.c/h) provides vi-like text editor functionality, including insert, delete, save operations, demonstrating complex application layer implementation. This architecture features high cohesion and low coupling, with clear module responsibilities, facilitating maintenance and expansion.}
+      {[\href{https://github.com/fushun891214/Advance_C_Final_Project}{GitHub}] A final project for Advanced C Programming course, implementing a Virtual File System with commands including vi, ls, mkdir, and rm.\\
+      Technical Highlights:\\
+      - Defined custom INode and SuperBlock data structures to manage Virtual Disk data allocation\\
+      - Utilized techniques such as pointers, pointer to pointer, bitmap, and dynamic memory management\\
+      Architecture Design:\\
+      - Core Layer (space.c/h): Implements the underlying management mechanism of the virtual disk, including allocation and release of SuperBlock, INode, and Block\\
+      - Command Layer (commands.c/h): Built on top of the core layer, implements user command interface (such as ls, cd, mkdir, rm, etc.), handling path parsing, file operations, and encrypted storage functions\\
+      - Editor Layer (vi.c/h): Provides vi-like text editor functionality, including insert, delete, save operations\\
+      This architecture features high cohesion and low coupling, with clear module responsibilities, facilitating maintenance and expansion.}
     \resumeSubItem{Pay Off Bar}
-      {[\href{https://youtu.be/O5BIyIPJP1Q?si=yKiBYVI9u3izC_13}{Demo Video} | \href{https://github.com/fushun891214/payOffBarServer}{GitHub}] A final project for Operating Systems course, designed to solve bill tracking problems when dining out, providing automatic bill management to prevent both payers and payees from forgetting debts. Main features include: Group Management - create groups to manage bill records, display all payees' debt amounts and payment status, facilitating collaborative bill splitting between payers and payees; Friend System - search and establish friend relationships using friend IDs; Payment Reminders - utilize push notifications to remind payees to pay through mobile notifications; Payment Status - payers can update payees' payment status within groups and notify payees of completed payments via push notifications. In the PayOff Bar project, I was responsible for backend API development and database schema design. In the friend system and group management features, I utilized relational design between multiple data collections and integrated Firebase Cloud Messaging service in the backend API server, enabling the frontend to trigger real-time app push notifications when calling APIs.}
+      {[\href{https://youtu.be/O5BIyIPJP1Q?si=yKiBYVI9u3izC_13}{Demo Video} | \href{https://github.com/fushun891214/payOffBarServer}{GitHub}] A final project for Operating Systems course, designed to solve bill tracking problems when dining out, providing automatic bill management to prevent both payers and payees from forgetting debts.\\
+      Main Features:\\
+      - Group Management: Create groups to manage bill records, display all payees' debt amounts and payment status, facilitating collaborative bill splitting\\
+      - Friend System: Search and establish friend relationships using friend IDs\\
+      - Payment Reminders: Utilize push notifications to remind payees to pay through mobile notifications\\
+      - Payment Status: Payers can update payees' payment status within groups and notify payees of completed payments via push notifications\\
+      Technical Implementation:\\
+      - Responsible for backend API development and database schema design\\
+      - Utilized relational design between multiple data collections\\
+      - Integrated Firebase Cloud Messaging service in the backend API server, enabling the frontend to trigger real-time app push notifications when calling APIs}
     \resumeSubItem{Stock Crawler}
       {[\href{https://github.com/fushun891214/Stock_Crawler}{GitHub}] A final project for Data Engineering Practice and Application course, aimed at crawling data from Taiwan Stock Exchange through web scraping technology and storing all crawled data in MongoDB database. Subsequently queried MongoDB to obtain specific stock trading information, closing prices, average prices, and other data, and used Python's Matplotlib library for data visualization.}
     \resumeSubItem{Travel Website}
