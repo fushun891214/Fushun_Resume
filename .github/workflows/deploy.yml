@@ -50,16 +50,16 @@ jobs:
 
             # 創建 Nginx 配置文件（禁用緩存）
             cat > /tmp/nginx-default.conf <<'ENDCONF'
-            server {
-                listen 80;
-                location / {
-                    root /usr/share/nginx/html;
-                    add_header Cache-Control "no-cache, no-store, must-revalidate";
-                    add_header Pragma "no-cache";
-                    add_header Expires "0";
-                }
-            }
-            ENDCONF
+server {
+    listen 80;
+    location / {
+        root /usr/share/nginx/html;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+        add_header Pragma "no-cache";
+        add_header Expires "0";
+    }
+}
+ENDCONF
 
             # 啟動 Nginx 容器提供靜態文件服務
             docker run -d \
