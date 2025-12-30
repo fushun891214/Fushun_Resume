@@ -48,13 +48,16 @@ jobs:
             docker stop resume-web || true
             docker rm resume-web || true
 
-            # 啟動 Nginx 容器提供靜態文件服務（禁用緩存）
+            # 構建生產環境鏡像（使用 Dockerfile 的 production 階段）
+            docker build --target production -t resume-web:latest .
+
+            # 啟動容器（掛載 PDF 目錄）
             docker run -d \
               --name resume-web \
               -p 8081:80 \
               -v /home/ubuntu/resume/resume_pdf:/usr/share/nginx/html:ro \
               --restart unless-stopped \
-              nginx:alpine sh -c "echo 'server { listen 80; location / { root /usr/share/nginx/html; add_header Cache-Control \"no-cache, no-store, must-revalidate\"; add_header Pragma \"no-cache\"; add_header Expires \"0\"; } }' > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+              resume-web:latest
 
             # 清理未使用的 Docker 資源
             docker system prune -f
