@@ -40,6 +40,10 @@ jobs:
             # 編譯 LaTeX 生成 PDF
             ./build.sh
 
+            # 驗證 PDF 已更新
+            echo "Generated PDF files:"
+            ls -lh resume_pdf/
+
             # 停止並刪除舊容器（如果存在）
             docker stop resume-web || true
             docker rm resume-web || true
