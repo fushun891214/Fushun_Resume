@@ -37,8 +37,23 @@ jobs:
             # 拉取最新代碼
             git pull origin main
 
-            # 編譯 LaTeX 生成 PDF
-            ./build.sh
+            # 清除舊的編譯產物
+            echo "Cleaning old PDF files..."
+            rm -f *.pdf *.aux *.log *.out
+            rm -rf resume_pdf/
+
+            # 構建 LaTeX 編譯環境
+            docker build --target builder -t sb2nov/latex .
+
+            # 編譯英文版 PDF
+            docker run --rm -i -v "$PWD":/data sb2nov/latex pdflatex fushun_resume.tex
+
+            # 編譯中文版 PDF
+            docker run --rm -i -v "$PWD":/data sb2nov/latex xelatex fushun_resume_zh.tex
+
+            # 複製 PDF 到輸出目錄
+            mkdir -p resume_pdf
+            cp fushun_resume.pdf fushun_resume_zh.pdf resume_pdf/
 
             # 驗證 PDF 已更新
             echo "Generated PDF files:"
@@ -48,16 +63,14 @@ jobs:
             docker stop resume-web || true
             docker rm resume-web || true
 
-            # 構建生產環境鏡像（使用 Dockerfile 的 production 階段）
-            docker build --target production -t resume-web:latest .
-
-            # 啟動容器（掛載 PDF 目錄）
-            docker run -d \
+            # 啟動 Python HTTP Server 提供 PDF 訪問（禁用緩存）
+            docker run --rm -d \
               --name resume-web \
-              -p 8081:80 \
-              -v /home/ubuntu/resume/resume_pdf:/usr/share/nginx/html:ro \
+              -p 8081:8081 \
+              -v /home/ubuntu/resume/resume_pdf:/data \
               --restart unless-stopped \
-              resume-web:latest
+              sb2nov/latex \
+              python3 -m http.server 8081 --directory /data
 
             # 清理未使用的 Docker 資源
             docker system prune -f
