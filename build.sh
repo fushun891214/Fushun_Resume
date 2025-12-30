@@ -3,7 +3,7 @@ echo "Cleaning old PDF files..."
 rm -f *.pdf *.aux *.log *.out
 rm -rf resume_pdf/
 
-docker build -t sb2nov/latex .
+docker build --target builder -t sb2nov/latex .
 
 # Build English version with pdflatex
 docker run --rm -i -v "$PWD":/data sb2nov/latex pdflatex fushun_resume.tex
