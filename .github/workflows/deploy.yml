@@ -64,7 +64,7 @@ jobs:
             docker rm resume-web || true
 
             # 啟動 Python HTTP Server 提供 PDF 訪問（禁用緩存）
-            docker run --rm -d \
+            docker run -d \
               --name resume-web \
               -p 8081:8081 \
               -v /home/ubuntu/resume/resume_pdf:/data \
