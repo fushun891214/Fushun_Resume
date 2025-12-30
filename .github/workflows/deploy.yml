@@ -1,0 +1,66 @@
+name: Deploy to EC2
+
+# 觸發條件：當 push 到 main 分支時
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # 允許手動觸發
+
+jobs:
+  deploy:
+    name: Deploy to EC2 Server
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout 代碼
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. SSH 連接到伺服器並部署
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: ${{ secrets.EC2_PORT }}
+          script: |
+            # 進入專案目錄（如果不存在則 clone）
+            if [ ! -d "/home/ubuntu/resume" ]; then
+              cd /home/ubuntu
+              git clone ${{ github.server_url }}/${{ github.repository }}.git resume
+            fi
+
+            cd /home/ubuntu/resume
+
+            # 拉取最新代碼
+            git pull origin main
+
+            # 編譯 LaTeX 生成 PDF
+            ./build.sh
+
+            # 停止並刪除舊容器（如果存在）
+            docker stop resume-web || true
+            docker rm resume-web || true
+
+            # 啟動 Nginx 容器提供靜態文件服務
+            docker run -d \
+              --name resume-web \
+              -p 8081:80 \
+              -v /home/ubuntu/resume/resume_pdf:/usr/share/nginx/html:ro \
+              --restart unless-stopped \
+              nginx:alpine
+
+            # 清理未使用的 Docker 資源
+            docker system prune -f
+
+      # 3. 部署成功通知
+      - name: Deployment Status
+        if: success()
+        run: echo "✅ 部署成功！網站已更新於 port 8081"
+
+      # 4. 部署失敗通知
+      - name: Deployment Failed
+        if: failure()
+        run: echo "❌ 部署失敗，請檢查錯誤日誌"
