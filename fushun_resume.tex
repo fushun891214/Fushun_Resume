@@ -17,8 +17,6 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
-
 \pagestyle{fancy}
 \fancyhf{} % Clear all header and footer fields
 \fancyfoot{}
@@ -43,8 +41,11 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate PDF is machine readable/ATS parsable
-\pdfgentounicode=1
+% Ensure that generated PDF is machine readable/ATS parsable when supported
+\ifdefined\pdfglyphtounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -103,7 +104,7 @@
   \resumeSubHeadingListStart
     \resumeSubheading
       {National Taipei University of Technology}{Taipei, Taiwan}
-      {Master of Electronic Engineering, Computer Science Track (\href{https://drive.google.com/file/d/12elL2Q7wpCJXIRANYHfhokcbRHI0OpR1/view?usp=sharing}{View Transcript})}{July 2024 -- Aug 2026}
+      {Master of Electronic Engineering (\href{https://drive.google.com/file/d/12elL2Q7wpCJXIRANYHfhokcbRHI0OpR1/view?usp=sharing}{View Transcript})}{July 2024 -- Aug 2026}
     \resumeSubheading
       {Soochow University}{Taipei, Taiwan}
       {Bachelor of Computer Science and Information Management (\href{https://drive.google.com/file/d/1x6KG0wfyhn3l8BxUbNuExm5QGhRpGS5u/view?usp=share_link}{View Transcript})}{Feb 2021 -- Mar 2024}
