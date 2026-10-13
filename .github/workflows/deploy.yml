@@ -25,39 +25,53 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           port: ${{ secrets.EC2_PORT }}
+          script_stop: true
           script: |
-            # 進入專案目錄（如果不存在則 clone）
-            if [ ! -d "/home/ubuntu/resume" ]; then
+            set -euo pipefail
+
+            REPO_DIR=/home/ubuntu/resume
+            OUTPUT_DIR=/home/ubuntu/resume_pdf
+            BUILD_DIR=$(mktemp -d)
+            trap 'rm -rf "$BUILD_DIR"' EXIT
+
+            # 初始化部署用的 Git 工作目錄。
+            if [ ! -d "$REPO_DIR/.git" ]; then
               cd /home/ubuntu
               git clone ${{ github.server_url }}/${{ github.repository }}.git resume
             fi
 
-            cd /home/ubuntu/resume
+            cd "$REPO_DIR"
 
-            # 拉取最新代碼
-            git pull origin main
+            # 部署目錄必須與遠端 main 完全一致，避免舊編譯產物阻擋 git pull。
+            git fetch --prune origin main
+            git reset --hard origin/main
+            git clean -ffd
 
-            # 清除舊的編譯產物
-            echo "Cleaning old PDF files..."
-            rm -f *.pdf *.aux *.log *.out
-            rm -rf resume_pdf/
+            # PDF 產物置於 Git 工作目錄之外，避免後續部署造成 Git 衝突。
+            mkdir -p "$OUTPUT_DIR"
 
             # 構建 LaTeX 編譯環境
             docker build --target builder -t sb2nov/latex .
 
-            # 編譯英文版 PDF
-            docker run --rm -i -v "$PWD":/data sb2nov/latex pdflatex fushun_resume.tex
+            # 使用 XeLaTeX 產生與本機一致的中英文履歷，並在錯誤時立即停止。
+            docker run --rm -i \
+              -v "$REPO_DIR":/data:ro \
+              -v "$BUILD_DIR":/output \
+              sb2nov/latex \
+              sh -lc 'cd /data && xelatex -interaction=nonstopmode -halt-on-error -output-directory=/output fushun_resume.tex'
 
-            # 編譯中文版 PDF
-            docker run --rm -i -v "$PWD":/data sb2nov/latex xelatex fushun_resume_zh.tex
+            docker run --rm -i \
+              -v "$REPO_DIR":/data:ro \
+              -v "$BUILD_DIR":/output \
+              sb2nov/latex \
+              sh -lc 'cd /data && xelatex -interaction=nonstopmode -halt-on-error -output-directory=/output fushun_resume_zh.tex'
 
-            # 複製 PDF 到輸出目錄
-            mkdir -p resume_pdf
-            cp fushun_resume.pdf fushun_resume_zh.pdf resume_pdf/
+            install -m 0644 "$BUILD_DIR/fushun_resume.pdf" "$OUTPUT_DIR/fushun_resume.pdf"
+            install -m 0644 "$BUILD_DIR/fushun_resume_zh.pdf" "$OUTPUT_DIR/fushun_resume_zh.pdf"
 
             # 驗證 PDF 已更新
             echo "Generated PDF files:"
-            ls -lh resume_pdf/
+            ls -lh "$OUTPUT_DIR"
 
             # 停止並刪除舊容器（如果存在）
             docker stop resume-web || true
@@ -67,7 +81,7 @@ jobs:
             docker run -d \
               --name resume-web \
               -p 8081:8081 \
-              -v /home/ubuntu/resume/resume_pdf:/data \
+              -v /home/ubuntu/resume_pdf:/data:ro \
               --restart unless-stopped \
               sb2nov/latex \
               python3 -m http.server 8081 --directory /data
