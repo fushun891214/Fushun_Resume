@@ -17,8 +17,6 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
-
 \pagestyle{fancy}
 \fancyhf{} % Clear all header and footer fields
 \fancyfoot{}
@@ -43,8 +41,11 @@
   \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate PDF is machine readable/ATS parsable
-\pdfgentounicode=1
+% Ensure that generated PDF is machine readable/ATS parsable when supported
+\ifdefined\pdfglyphtounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -93,8 +94,8 @@
 
 %----------HEADING-----------------
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\href{https://web.fushun181.com/}{\Large FU-SHUN ZHANG}} & Email: \href{mailto:fushun891214@gmail.com}{fushun891214@gmail.com}\\
-  \href{https://web.fushun181.com/}{web.fushun181.com} & \\
+  \textbf{\href{https://fushun181.com/}{\Large FU-SHUN CHANG}} & Email: \href{mailto:fushun891214@gmail.com}{fushun891214@gmail.com}\\
+  \href{https://fushun181.com/}{fushun181.com} & \\
 \end{tabular*}
 
 
@@ -103,108 +104,62 @@
   \resumeSubHeadingListStart
     \resumeSubheading
       {National Taipei University of Technology}{Taipei, Taiwan}
-      {Master of Electronic Engineering, Computer Science Track (\href{https://drive.google.com/file/d/1fm6N8K4sa3hF5T6KT4cwoBWaxjz9KE2g/view?usp=share_link}{View Transcript})}{July 2024 -- Aug 2026}
+      {M.S. in Electronic Engineering (\href{https://drive.google.com/file/d/12elL2Q7wpCJXIRANYHfhokcbRHI0OpR1/view?usp=sharing}{View Transcript})}{Jul 2024 -- Aug 2026}
     \resumeSubheading
       {Soochow University}{Taipei, Taiwan}
-      {Bachelor of Computer Science and Information Management (\href{https://drive.google.com/file/d/1x6KG0wfyhn3l8BxUbNuExm5QGhRpGS5u/view?usp=share_link}{View Transcript})}{Feb 2021 -- Mar 2024}
+      {B.S. in Computer Science and Information Management (\href{https://drive.google.com/file/d/1x6KG0wfyhn3l8BxUbNuExm5QGhRpGS5u/view?usp=share_link}{View Transcript})}{Feb 2021 -- Mar 2024}
   \resumeSubHeadingListEnd
 
-
-%-----------CERTIFICATIONS-----------------
-\section{Certifications}
-  \resumeSubHeadingListStart
-    \resumeSubItem{TOEIC}
-      {560 (Date: July 2025) (\href{https://drive.google.com/file/d/1cn7Se__A2mzFqkbpxQ4oiAXuJRGHWV6u/view?usp=sharing}{View Certificate})}
-  \resumeSubHeadingListEnd
+%-----------SUMMARY-----------------
+\section{Summary}
+\small{AI and full-stack engineer with hands-on experience in backend API development, database design, web development, and cloud deployment. Maintained and refactored large-scale language-learning and construction-bidding platforms, delivering REST APIs, database solutions, Vue-based admin-system modernization, and SEO improvements. Experienced in RAG, LLM, and AI agent application development, from environment setup and system development to deployment and operations.}
 
 
 %-----------EXPERIENCE-----------------
 \section{Experience}
   \resumeSubHeadingListStart
+    \resumeSubheading
+      {Pegatron Corporation}{Taipei, Taiwan}
+      {AI Engineer}{Sep 2026 -- Present}
 
     \resumeSubheading
-      {MMSLAB}{Taipei, Taiwan}
-      {Lab Member}{July 2024 -- Aug 2026}
+      {National Taipei University of Technology, MMSLAB}{Taipei, Taiwan}
+      {Backend \& Web Developer}{Jul 2024 -- Aug 2026}
       \resumeItemListStart
         \resumeItem{iTalkuTalk}
-          {[\href{https://www.italkutalk.com/}{Website} | \href{https://apps.apple.com/tw/app/italkutalk/id1263409577}{App Store} | \href{https://play.google.com/store/apps/details?id=lab.italkutalk&hl=zh_TW}{Google Play}] A large-scale language learning platform with over 1 million downloads on Google Play. Responsible for backend API development, database architecture design, and web development. Took over and refactored legacy codebase, maintaining and optimizing features based on user requirements. Rebuilt the admin management system from EJS architecture to Vue framework, significantly improving UI interface and overall performance.}
+          {[\href{https://www.italkutalk.com/}{Website} | \href{https://apps.apple.com/tw/app/italkutalk/id1263409577}{App Store} | \href{https://play.google.com/store/apps/details?id=lab.italkutalk&hl=zh_TW}{Google Play}] Maintained and refactored backend APIs, database structures, and web features for a large-scale language-learning platform. Rebuilt a difficult-to-maintain EJS admin system with Vue, integrated APIs, and improved maintainability and usability.}
         \resumeItem{HomeEasy}
-          {[\href{https://www.homeeasy.app/}{Website} | \href{https://apps.apple.com/us/app/家易-home-easy-裝潢施工比價平台/id6477271187}{App Store} | \href{https://play.google.com/store/apps/details?id=lab.homeeasy}{Google Play}] An interior decoration and construction bidding platform providing services across web, Android, and iOS platforms. Took over the project during second year of master's program, responsible for backend API development, database architecture design, and web development. Fixed multiple functional and workflow bugs. Researched Google Search Console and SEO best practices, optimized website SEO configurations, significantly increasing project visibility.}
+          {[\href{https://www.homeeasy.app/}{Website} | \href{https://apps.apple.com/us/app/家易-home-easy-裝潢施工比價平台/id6477271187}{App Store} | \href{https://play.google.com/store/apps/details?id=lab.homeeasy}{Google Play}] Developed backend APIs, database solutions, and web features for a multi-platform interior construction bidding service; resolved functional and workflow issues. Improved metadata and SEO configuration based on Google Search Console and SEO audit recommendations.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
+%-----------PUBLICATIONS-----------------
+\section{Publications}
+  \resumeSubHeadingListStart
+    \item\small{\textit{\href{https://www.books.com.tw/products/0011063512}{Easy RAG Implementation: Building Hallucination-Free LLM And Generative AI With NVIDIA Microservices}}, Shih-Chia Huang, Fu-Shun Chang, DrMaster Press, October 2026.}
+  \resumeSubHeadingListEnd
+
 
 %-----------PROJECTS-----------------
-\section{Projects}
+\section{Course Projects}
   \resumeSubHeadingListStart
     \resumeSubItem{Virtual File System}
-      {[\href{https://github.com/fushun891214/Advance_C_Final_Project}{GitHub}] A final project for Advanced C Programming course, implementing a Virtual File System with commands including vi, ls, mkdir, and rm.\\
-      Technical Highlights:\\
-      - Defined custom INode and SuperBlock data structures to manage Virtual Disk data allocation\\
-      - Utilized techniques such as pointers, pointer to pointer, bitmap, and dynamic memory management\\
-      Architecture Design:\\
-      - Core Layer (space.c/h): Implements the underlying management mechanism of the virtual disk, including allocation and release of SuperBlock, INode, and Block\\
-      - Command Layer (commands.c/h): Built on top of the core layer, implements user command interface (such as ls, cd, mkdir, rm, etc.), handling path parsing, file operations, and encrypted storage functions\\
-      - Editor Layer (vi.c/h): Provides vi-like text editor functionality, including insert, delete, save operations\\
-      This architecture features high cohesion and low coupling, with clear module responsibilities, facilitating maintenance and expansion.}
+      {[\href{https://github.com/fushun891214/Advance_C_Final_Project}{GitHub}] Built a virtual file system in C with commands including vi, ls, mkdir, and rm; designed SuperBlock, INode, and Block data structures for disk-space management. Applied a modular core, command, and editor architecture for allocation, path parsing, file operations, and text editing.}
     \resumeSubItem{Pay Off Bar}
-      {[\href{https://youtu.be/O5BIyIPJP1Q?si=yKiBYVI9u3izC_13}{Demo Video} | \href{https://github.com/fushun891214/payOffBarServer}{GitHub}] A final project for Operating Systems course, designed to solve bill tracking problems when dining out, providing automatic bill management to prevent both payers and payees from forgetting debts.\\
-      Main Features:\\
-      - Group Management: Create groups to manage bill records, display all payees' debt amounts and payment status, facilitating collaborative bill splitting\\
-      - Friend System: Search and establish friend relationships using friend IDs\\
-      - Payment Reminders: Utilize push notifications to remind payees to pay through mobile notifications\\
-      - Payment Status: Payers can update payees' payment status within groups and notify payees of completed payments via push notifications\\
-      Technical Implementation:\\
-      - Responsible for backend API development and database schema design\\
-      - Utilized relational design between multiple data collections\\
-      - Integrated Firebase Cloud Messaging service in the backend API server, enabling the frontend to trigger real-time app push notifications when calling APIs}
-    \resumeSubItem{Stock Crawler}
-      {[\href{https://github.com/fushun891214/Stock_Crawler}{GitHub}] A final project for Data Engineering Practice and Application course, aimed at crawling data from Taiwan Stock Exchange through web scraping technology and storing all crawled data in MongoDB database. Subsequently queried MongoDB to obtain specific stock trading information, closing prices, average prices, and other data, and used Python's Matplotlib library for data visualization.}
-    \resumeSubItem{Travel Website}
-      {[\href{https://github.com/fushun891214/Travel-Website}{GitHub}] A final project for Agile Development and Practical Application course, focused on developing a travel website using Scrum methodology. Based on user requirements, planned and designed the entire project workflow through intensive discussions and rapid iterations. The final implementation delivered a travel website project supporting RWD responsive display and email verification functionality.}
+      {[\href{https://youtu.be/O5BIyIPJP1Q?si=yKiBYVI9u3izC_13}{Demo Video} | \href{https://github.com/fushun891214/payOffBarServer}{GitHub}] Designed backend APIs and data structures for group expense tracking, friend relationships, and payment-status management. Integrated Firebase Cloud Messaging to deliver real-time payment reminders and status notifications.}
     \resumeSubItem{Skin Identification App}
-      {[\href{https://github.com/fushun891214/Skin_Identification_}{GitHub}] My undergraduate capstone project, aimed at capturing human skin through mobile phone camera to identify various skin conditions. Provided registration and login functionality, allowing users to record and track their skin health status. In this project, I was responsible for integrating the skin recognition model and app functionality development, including implementing Google third-party registration/login functionality and user data management.}
+      {[\href{https://github.com/fushun891214/Skin_Identification_}{GitHub}] Integrated a skin-recognition model into a mobile application for capturing, recording, and tracking skin-health information. Implemented Google sign-in, user-account features, and user-data management.}
   \resumeSubHeadingListEnd
 
 %
 %--------SKILLS------------
 \section{Skills}
   \resumeSubHeadingListStart
-    \item
-      \textbf{Backend Development}
-      \resumeItemListStart
-        \item\small{Proficient in .NET and Express API development}
-        \item\small{Familiar with MVC project architecture}
-        \item\small{Database schema design and maintenance}
-        \item\small{Docker deployment capabilities}
-        \item\small{Version control tools such as Git and GitHub}
-        \item\small{CI/CD automation tools such as Jenkins}
-      \resumeItemListEnd
-    \item
-      \textbf{Web Development}
-      \resumeItemListStart
-        \item\small{Proficient in basic web structure: HTML, JS, CSS}
-        \item\small{Web frameworks: EJS, Vue, Nuxt}
-        \item\small{Familiar with web rendering modes: CSR and SSR}
-        \item\small{Web SEO optimization including meta element configuration}
-        \item\small{API integration using axios for HTTP requests}
-        \item\small{Configure personalized data and store in Local Storage}
-      \resumeItemListEnd
-    \item
-      \textbf{Cloud Services}
-      \resumeItemListStart
-        \item\small{Familiar with AWS services: EC2, Load Balance, Lambda, ECR, S3}
-        \item\small{Familiar with Cloudflare services: Domain Name registration and management, Cloudflare Tunnel configuration, DNS setup, and Load Balance integration}
-      \resumeItemListEnd
-    \item
-      \textbf{LLM Application Development}
-      \resumeItemListStart
-        \item\small{Proficient in environment setup: Ollama, LangChain, LangGraph, etc.}
-        \item\small{Experienced in RAG application development.}
-        \item\small{Experienced in AI Agent development.}
-        \item\small{Experienced in Multi-Agent system development.}
-      \resumeItemListEnd
+    \item\small{\textbf{Backend \& Databases}: .NET, Node.js, Express, REST APIs, MVC, database schema design}
+    \item\small{\textbf{Frontend}: JavaScript, HTML, CSS, Vue, Nuxt, EJS, SSR, CSR, SEO}
+    \item\small{\textbf{Cloud \& DevOps}: Docker, Git, GitHub, Jenkins, AWS (EC2, Elastic Load Balancing, Lambda, ECR, S3), Cloudflare (DNS, Tunnel, Load Balancing)}
+    \item\small{\textbf{AI Applications}: RAG (Vector, Graph, Hybrid), LLM deployment and inference, Ollama, NVIDIA NIM, Google AI Studio, LangChain, LangGraph, MCP, AI Agents, OpenClaw, Hermes}
   \resumeSubHeadingListEnd
 
 
